@@ -10,9 +10,16 @@ function require(p){
   var path = require.resolve(p);
   var mod = require.modules[path];
   if (!mod) throw new Error('failed to require "' + p + '"');
+  
+  var process = {
+    env: {
+      NODE_ENV : "production"
+    }
+  };
+    
   if (!mod.exports) {
     mod.exports = {};
-    mod.call(mod.exports, mod, mod.exports, require.relative(path));
+    mod.call(mod.exports, mod, mod.exports, require.relative(path), process);
   }
   return mod.exports;
 }

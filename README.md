@@ -13,7 +13,7 @@ First put `require.js` on your page.
 Then use `require.register` to register your module.
 
 ```javascript
-require.register("browser/debug.js", function(module, exports, require){
+require.register("browser/debug.js", function(module, exports, require, process){
   // Module code goes here
 });
 ```
